@@ -7,17 +7,39 @@ import { SelectedQuadrado } from '../selected-quadrado';
   styleUrls: ['./quadrado-list.component.scss'],
 })
 export class QuadradoListComponent implements OnInit {
-  posicoes: SelectedQuadrado[] = [];
-  p1: string = '';
-  p2: string = '';
+  positions: SelectedQuadrado[] = [];
+  p1: string = 'x';
+  p2: string = 'o';
+  turn: string;
   constructor() {}
 
   ngOnInit(): void {
+    this.turn = this.p2;
     for (let i = 0; i < 9; i++) {
-      this.posicoes.push({
+      this.positions.push({
         disabled: false,
         selected: '',
       });
+    }
+  }
+
+  handleSelect(event) {
+    const { index, disabled } = event;
+
+    if (!disabled) {
+      this.toggleTurn();
+      this.positions[index].disabled = true;
+      this.positions[index].selected = this.turn;
+    }
+
+    console.log(event);
+  }
+
+  toggleTurn(): void {
+    if (this.turn === this.p1) {
+      this.turn = this.p2;
+    } else {
+      this.turn = this.p1;
     }
   }
 }
