@@ -1,0 +1,7 @@
+<div class="card-container h-100">
+  <div class="row h-100">
+    <div class="col-4 quadrado" *ngFor="let posicao of posicoes">
+      <app-quadrado [selected]="posicao.selected"></app-quadrado>
+    </div>
+  </div>
+</div>
