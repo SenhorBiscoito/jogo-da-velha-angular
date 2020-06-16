@@ -15,9 +15,6 @@ export class QuadradoComponent implements OnInit {
   ngOnInit(): void {}
 
   handleClick() {
-    // console.log(this.selected);
-    // console.log(this.disabled);
-    // console.log(this.index);
     const { index, disabled } = this;
     this.change.emit({ index, disabled });
   }

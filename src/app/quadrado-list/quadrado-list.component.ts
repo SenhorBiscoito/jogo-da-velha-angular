@@ -1,6 +1,6 @@
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { SelectedQuadrado } from '../selected-quadrado';
-
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-quadrado-list',
   templateUrl: './quadrado-list.component.html',
@@ -14,6 +14,8 @@ export class QuadradoListComponent implements OnInit {
     'https://cdn.discordapp.com/attachments/689245269887418415/722241408874053719/eevee_dancing.gif';
   p2: string =
     'https://cdn.discordapp.com/attachments/689245269887418415/722241716542767104/lycanroc_warning.gif';
+  empate: string =
+    'https://cdn.discordapp.com/attachments/689245269887418415/722282206575460412/crypilp.png';
   turn: string;
   constructor() {}
 
@@ -59,14 +61,14 @@ export class QuadradoListComponent implements OnInit {
 
         // VENCEDOR
         if (posicoesWinner.length === 3) {
-          alert(`o vencedor é ${this.turn}`);
+          this.modalFofo(this.turn, 'O jogador com esse gif ganhou ;3');
           this.resetGame();
           break;
         }
 
         // EMPATE
         if (this.positionsIndex.length === 9) {
-          alert('ninguem ganhou');
+          this.modalFofo(this.empate, 'Empatou');
           this.resetGame();
           break;
         }
@@ -80,6 +82,23 @@ export class QuadradoListComponent implements OnInit {
 
     // reinicia o jogo
     this.initialize();
+  }
+
+  modalFofo(winner = '', msg): void {
+    swal.fire({
+      title: msg,
+      imageUrl: winner,
+      imageWidth: 400,
+      imageHeight: 200,
+      width: 600,
+      padding: '3em',
+      // backdrop: `
+      //   rgba(0,0,123,0.4)
+      //   url("https://cdn.discordapp.com/emojis/635583064604409881.gif?v=1")
+      //   right top
+      // `,
+      confirmButtonText: 'Denovo',
+    });
   }
 
   initialize(): void {

@@ -32,9 +32,13 @@ p {
 
 .content {
   margin: 0;
-  padding: 10% 16px 10% 16px;
+  padding: 5% 16px 5% 16px;
   // align-items: center;
-  height: 100%;
+  background-image:url(https://d.facdn.net/art/ranthfox/1501538083/1501536112.ranthfox_renamon_wallpaper_ver-2.png);
+  height: -webkit-fill-available;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 svg.material-icons {
